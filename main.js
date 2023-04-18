@@ -1,16 +1,15 @@
-// Definir variables
 let productos = [  {    
-  nombre: "camiseta",    
+  nombre: "Camiseta",    
   precio: 50,    
   cantidad: 1000  
 },  
 {    
-  nombre: "pantalón",    
+  nombre: "Pantalón",    
   precio: 80,    
   cantidad: 800  
 },  
 {    
-  nombre: "accesorios",    
+  nombre: "Accesorio",    
   precio: 30,    
   cantidad: 1500  
 }];
@@ -18,14 +17,12 @@ let carrito = [];
 let totalCompra = 0;
 let seguirComprando = true;
 
-// Función para obtener el índice de un producto en el array
 function obtenerIndiceProducto(nombre) {
   return productos.findIndex(function (producto) {
     return producto.nombre === nombre;
   });
 }
 
-// Función para obtener el precio de un producto
 function obtenerPrecio(nombre) {
   let indice = obtenerIndiceProducto(nombre);
   if (indice >= 0) {
@@ -34,9 +31,8 @@ function obtenerPrecio(nombre) {
   return 0;
 }
 
-// Función para comprar un producto
 function comprarProducto() {
-  let nombre = prompt("¿Qué producto deseas comprar? (camiseta, pantalón o accesorios)").toLowerCase();
+  let nombre = prompt("¿Qué producto deseas comprar? (Camiseta, Pantalón o Accesorio)").toLowerCase();
   let cantidad = parseFloat(prompt("¿Cuántos deseas comprar?"));
 
   let indice = obtenerIndiceProducto(nombre);
@@ -55,28 +51,27 @@ function comprarProducto() {
     alert("Lo siento, la cantidad es inválida.");
   }
 
-  seguirComprando = confirm("¿Deseas seguir comprando?");
+  seguirComprando = confirm("¿Desea seguir comprando?");
 }
 
-// Loop principal
-alert("Bienvenido al simulador de compras.");
+alert("Bienvenido al simulador de compras!");
 while (seguirComprando) {
-  let accion = prompt("¿Qué deseas hacer? (comprar/salir)");
+  let accion = prompt("¿Qué deseas hacer? (Comprar/Salir)");
 
   switch (accion) {
-    case "comprar":
+    case "Comprar":
       comprarProducto();
       break;
-    case "salir":
-      alert("Gracias por utilizar el simulador.");
+    case "Salir":
+      alert("Gracias por utilizar el simulador!");
       seguirComprando = false;
       break;
     default:
-      alert("Lo siento, la acción es inválida. Intenta de nuevo.");
+      alert("Lo siento, la acción es inválida. Intente de nuevo.");
       break;
   }
 
-  if (!seguirComprando) { // si se ha salido del loop, mostrar el total
+  if (!seguirComprando) {
     let totalCompra = carrito.reduce((total, producto) => total + producto.cantidad * obtenerPrecio(producto.nombre), 0);
     alert("Gracias! Tu monto total es de: " + totalCompra + ".");
   }
